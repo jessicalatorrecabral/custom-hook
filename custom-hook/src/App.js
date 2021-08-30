@@ -9,19 +9,27 @@ const App = () => {
 
   const changePokemonName = (e) =>{
     setPokemonName(e.target.value)
+    
   }
-
-  useEffect(()=>{
-    getData()
-  },[pokemonName])
+  
+  
+  // useEffect(()=>{
+  //   setIsLoading(false)
+  // },[pokemonName])
 
   return (
     <div>
       <label>Digite o nome de algum pokémon:</label>
-     <input placeholder={"ex.: eevee"} value={pokemonName} onChange={changePokemonName}/>
-     {isLoading && <p>Carregando...</p>}
-      <p>Nome: {data.name}</p>
-      <p>Peso: {data.weight} kg</p> 
+      <input placeholder={"ex.: eevee"} value={pokemonName} onChange={changePokemonName}/>
+      <button onClick={getData}>buscar pokemon</button>
+      { isLoading ? <p>Carregando</p> : 
+        <div>
+          <p>Nome: {data.name}</p>
+          <p>Peso: {data.weight} kg</p> 
+        </div>}
+        
+      
+        
     </div>
   )
 }
