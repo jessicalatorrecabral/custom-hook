@@ -9,22 +9,23 @@ const useApiCall = (url) => {
   const[data, setData]= useState({})
 
   const getData =  () =>
-  setIsLoading(true);
+          // setIsLoading(true)
     
         axios
           .get(url)
+
           .then((response) => {
-            setIsLoading(false);
 
             setResponse(response)
             setData(response.data)
+            setIsLoading(false)
 
 
           })
           .catch((err) => {
             setErrors(err)
             // alert('ocorreu um erro, tente novamente')
-            setIsLoading(false);
+            setIsLoading(false)
           }
     
   )
@@ -33,7 +34,7 @@ const useApiCall = (url) => {
   //   getData();
   // }, [data]);
 
-  return {data, isLoading, setIsLoading, getData, response, errors}
+  return {data, getData, isLoading, response, errors}
 
  
   
